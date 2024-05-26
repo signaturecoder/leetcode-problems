@@ -26,3 +26,28 @@ const s = "anagram",
 // const s = "rat",
 //   t = "car";
 console.log(isAnagram(s, t));
+
+
+function validAnagram(arrA, arrB) {
+  if(arrA.length !== arrB.length) return false;
+
+  let freqA = {}, freqB = {};
+  for(let char of arrA) {
+    freqA[char] = (arrA[char] || 0 ) + 1;
+  }
+
+  for(let char of arrB) {
+    freqB[char] = (arrB[char] || 0 ) + 1;
+  }
+
+  for(let key in freqA) {
+    if(!(key in freqB))
+        return false;
+    if(freqB[key] !== freqA[key])
+        return false;
+  }
+
+  return true;
+}
+
+validAnagram(s,t);
